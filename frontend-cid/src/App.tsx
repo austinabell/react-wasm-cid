@@ -10,10 +10,19 @@ type ILoaded = {
 const Loaded = ({ wasm }: ILoaded) => {
   const [text, setText] = useState<string>("");
   const [cid, setCid] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (e: FormElem): void => {
     e.preventDefault();
-    setCid(text);
+    let cid_bz;
+    try {
+      cid_bz = wasm.hex_to_cid_hex(text);
+      setCid(cid_bz);
+      setError(null);
+    } catch (err) {
+      setError(err.toString());
+      console.error("Error in getting cid: ", err);
+    }
   };
 
   return (
@@ -22,7 +31,7 @@ const Loaded = ({ wasm }: ILoaded) => {
         <input value={text} onChange={e => setText(e.target.value)} />
         <input type="submit" value="Submit" />
       </form>
-      <div>{cid}</div>
+      <div>{error ? "Error: " + error : cid}</div>
     </header>
   );
 };
