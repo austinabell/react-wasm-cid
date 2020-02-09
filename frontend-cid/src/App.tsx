@@ -1,40 +1,14 @@
 import React, { useState } from "react";
-import "./App.css";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core";
+import { teal } from "@material-ui/core/colors";
+import { Loaded } from "./CidForm";
 
-type FormElem = React.FormEvent<HTMLFormElement>;
-
-type ILoaded = {
-  wasm: any;
-};
-
-const Loaded = ({ wasm }: ILoaded) => {
-  const [text, setText] = useState<string>("");
-  const [cid, setCid] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubmit = (e: FormElem): void => {
-    e.preventDefault();
-    let cid_bz;
-    try {
-      cid_bz = wasm.hex_to_cid_hex(text);
-      setCid(cid_bz);
-      setError(null);
-    } catch (err) {
-      setError(err.toString());
-      console.error("Error in getting cid: ", err);
-    }
-  };
-
-  return (
-    <header className="App-header">
-      <form onSubmit={handleSubmit}>
-        <input value={text} onChange={e => setText(e.target.value)} />
-        <input type="submit" value="Submit" />
-      </form>
-      <div>{error ? "Error: " + error : cid}</div>
-    </header>
-  );
-};
+const darkTheme = createMuiTheme({
+  palette: {
+    type: "dark",
+    primary: { main: teal[600] }
+  }
+});
 
 const Unloaded = () => {
   return (
@@ -63,7 +37,9 @@ const App = () => {
   }
 
   return (
-    <div className="App">{wasm ? <Loaded wasm={wasm} /> : <Unloaded />}</div>
+    <ThemeProvider theme={darkTheme}>
+      {wasm ? <Loaded wasm={wasm} /> : <Unloaded />}
+    </ThemeProvider>
   );
 };
 
