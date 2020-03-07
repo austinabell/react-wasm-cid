@@ -1,0 +1,16 @@
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "content_security_policy": "script-src 'self' 'sha256-HQusQoH3b7ceR30ZDzexwVQtCPq/tvs+xr3xNGoMbgk='; object-src 'self'"
+}
