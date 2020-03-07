@@ -11,14 +11,6 @@ const darkTheme = createMuiTheme({
   }
 });
 
-const Unloaded = () => {
-  return (
-    <header className="App-header">
-      <div>Loading wasm...</div>
-    </header>
-  );
-};
-
 const App = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [wasm, setWasm] = useState<any | null>(null);
@@ -39,7 +31,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      {wasm ? <Loaded wasm={wasm} /> : <Unloaded />}
+      <Loaded wasm={wasm} />
     </ThemeProvider>
   );
 };

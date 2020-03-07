@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center"
   },
   card: {
-    margin: theme.spacing(8),
+    margin: theme.spacing(4),
     display: "flex",
     flexDirection: "column"
   },
@@ -99,7 +99,7 @@ export const Loaded = ({ wasm }: ILoaded) => {
           <TextField
             id="standard-read-only-input"
             fullWidth
-            label="Blake2b512 Cid"
+            label="Blake2b256 Cid"
             value={cid}
             multiline
             InputProps={{

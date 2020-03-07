@@ -12,7 +12,7 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 wasm-bindgen = "0.2"
-forest_cid = { git = "https://github.com/chainsafe/forest", rev = "b25b40669f7b333e00e6aa41762a514d9e8b11c3" }
+forest_cid = { git = "https://github.com/chainsafe/forest", rev = "bd9f5cf0f18dff128577207743b534db9f1ed559" }
 hex = "0.4"
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
